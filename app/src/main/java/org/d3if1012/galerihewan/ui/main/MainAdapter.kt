@@ -8,8 +8,13 @@ import org.d3if1012.galerihewan.R
 import org.d3if1012.galerihewan.databinding.ListItemBinding
 import org.d3if1012.galerihewan.model.Hewan
 
-class MainAdapter (private val data: List<Hewan>):
-    RecyclerView.Adapter<MainAdapter.ViewHolder>() {
+class MainAdapter : RecyclerView.Adapter<MainAdapter.ViewHolder>() {
+    private val data = mutableListOf<Hewan>()
+    fun updateData(newData: List<Hewan>) {
+        data.clear()
+        data.addAll(newData)
+        notifyDataSetChanged()
+    }
     class ViewHolder(
         private val binding: ListItemBinding
     ) : RecyclerView.ViewHolder(binding.root) {
