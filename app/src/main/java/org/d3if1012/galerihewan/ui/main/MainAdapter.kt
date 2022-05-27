@@ -4,9 +4,11 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import org.d3if1012.galerihewan.R
 import org.d3if1012.galerihewan.databinding.ListItemBinding
 import org.d3if1012.galerihewan.model.Hewan
+import org.d3if1012.galerihewan.network.HewanApi
 
 class MainAdapter : RecyclerView.Adapter<MainAdapter.ViewHolder>() {
     private val data = mutableListOf<Hewan>()
@@ -22,8 +24,10 @@ class MainAdapter : RecyclerView.Adapter<MainAdapter.ViewHolder>() {
             namaTextView.text = hewan.nama
             latinTextView.text = hewan.namaLatin
             unggas.text = hewan.jenis
-            imageView.setImageResource(hewan.imageResId)
-
+            Glide.with(imageView.context)
+                .load(HewanApi.getHewanUrl(hewan.imageId))
+                .error(R.drawable.ic_baseline_broken_image_24)
+                .into(imageView)
             root.setOnClickListener {
                 val message = root.context.getString(R.string.message, hewan.nama)
                 Toast.makeText(root.context, message, Toast.LENGTH_LONG).show()
