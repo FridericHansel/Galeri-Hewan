@@ -4,16 +4,24 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import org.d3if1012.galerihewan.R
+import org.d3if1012.galerihewan.util.MyTimer
 
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var myTimer: MyTimer
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        myTimer = MyTimer()
+
 
         Log.i("MainActivity", "onCreate dijalankan")
 
     }
     override fun onStart() {
+        myTimer.startTimer()
         super.onStart()
         Log.i("MainActivity", "onStart dijalankan")
     }
@@ -27,6 +35,7 @@ class MainActivity : AppCompatActivity() {
     }
     override fun onStop() {
         Log.i("MainActivity", "onStop dijalankan")
+        myTimer.stopTimer()
         super.onStop()
     }
     override fun onDestroy() {
