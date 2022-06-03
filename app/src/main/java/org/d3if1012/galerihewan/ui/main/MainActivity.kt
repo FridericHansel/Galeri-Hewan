@@ -3,10 +3,7 @@ package org.d3if1012.galerihewan.ui.main
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import androidx.recyclerview.widget.DividerItemDecoration
-import androidx.recyclerview.widget.RecyclerView
 import org.d3if1012.galerihewan.R
-import org.d3if1012.galerihewan.model.Hewan
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
