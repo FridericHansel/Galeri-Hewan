@@ -46,7 +46,7 @@ class MainViewModel : ViewModel() {
             .setInitialDelay(1, TimeUnit.MINUTES)
             .build()
         WorkManager.getInstance(app).enqueueUniqueWork(
-            "updater",
+            " MainActivity.CHANNEL_ID,\n",
             ExistingWorkPolicy.REPLACE,
             request
         )
