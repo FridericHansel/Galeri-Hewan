@@ -8,10 +8,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.RecyclerView
-import org.d3if1012.galerihewan.R
 import org.d3if1012.galerihewan.databinding.FragmentMainBinding
-import org.d3if1012.galerihewan.model.Hewan
-import org.d3if1012.galerihewan.network.HewanApi
+import org.d3if1012.galerihewan.network.ApiStatus
 
 class MainFragment : Fragment() {
 
@@ -46,15 +44,15 @@ class MainFragment : Fragment() {
 
         })
     }
-    private fun updateProgress(status: HewanApi.ApiStatus) {
+    private fun updateProgress(status:ApiStatus) {
         when (status) {
-            HewanApi.ApiStatus.LOADING -> {
+            ApiStatus.LOADING -> {
                 binding.progressBar.visibility = View.VISIBLE
             }
-            HewanApi.ApiStatus.SUCCESS -> {
+            ApiStatus.SUCCESS -> {
                 binding.progressBar.visibility = View.GONE
             }
-            HewanApi.ApiStatus.FAILED -> {
+            ApiStatus.FAILED -> {
                 binding.progressBar.visibility = View.GONE
                 binding.networkError.visibility = View.VISIBLE
             }
